@@ -1,0 +1,15 @@
+services:
+  reverse:
+    container_name: reverse
+    hostname: reverse
+    image: nginx:latest
+    environment:
+     - PUID=1000
+     - PGID=1000
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /home/malcolm/docker-storage/nginx/rproxy/config:/etc/nginx
+      - /home/malcolm/docker-storage/nginx/rproxy/certs:/etc/ssl/private
+    restart: unless-stopped
